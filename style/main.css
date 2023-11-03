@@ -1,0 +1,22 @@
+
+* {
+box-sizing: border-box;
+}
+
+html{
+  font-size: 15px;
+}
+
+body{
+  margin: 0;
+}
+
+header{
+  align-items: center;
+
+
+}
+
+H1{
+  color: blue;
+}
