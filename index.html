@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/main.css">
   <script defer src="scripts/app.js" charset="utf-8"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Londrina+Shadow&family=Nunito:wght@300;400;500;700&family=Pixelify+Sans:wght@400;500;700&family=Poiret+One&family=Roboto:ital,wght@0,300;0,400;0,500;1,100;1,300&display=swap"
+    rel="stylesheet">
   <title>BAO BAO</title>
 </head>
+
 <body>
   <header>
-    <h1>BAO!</h1>
-    <h3>HIGHEST SCORE :  <span class='current-highest-score'>000</span></h3>
+    <h1>HUNGRY BAO!</h1>
+    <h3>HIGHEST SCORE : <span id='current-highest-score'>000</span></h3>
   </header>
 
   <div class='info'>
-    <p class='level-text'>Level:<span class='level-stage'>0</span></p>
-    <p class='lives-text'>Lives:<span class='lives-amount'>0</span></p>
-    <p class='score-text'>Score:<span class='current-score'>0</span></p>
+    <p class='level-text'>Level : <span id='level-stage'>0</span></p>
+    <p class='lives-text'>Lives : <span id='lives-amount'>3</span></p>
+    <p class='score-text'>Score : <span id='current-score'>0</span></p>
   </div>
 
-  <section class="gridforgame">
-
-  </section>
-
-  <button class="startbutton">start</button>
-
-
-  
-
+  <main class="gridwrap">
+    <section class="grid"></section>
+  </main>
+  <footer>
+    <button id="startbutton">start</button>
+  </footer>
 </body>
+
 </html>

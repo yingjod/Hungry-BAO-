@@ -1,22 +1,183 @@
-
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html{
+html {
   font-size: 15px;
 }
 
-body{
+body {
   margin: 0;
+  background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), url('../shop.jpeg');
 }
 
-header{
+header {
+  display: block;
+  text-align: center;
+  background-color:#dfe6e5c2;
+  margin-right: 40em;
+  margin-left: 40em;
+  border-radius: 15px 15px 15px 15px;
+  border-top: 20px;
+  font-family:'Pixelify Sans', sans-serif; 
+
+}
+
+H1 {
+  color:rgb(88, 26, 26);
+  
+  font-size: 40px;
+  background-color: aliceblue;
+  border-radius: 15px 15px 0px 0px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+}
+
+h3{
+  background-color:#dfe6e5c2;
+  border-radius: 15px 15px 15px 15px;
+  padding-top: 10px;  
+  padding-bottom: 10px;
+}
+
+footer {
+  justify-content: center;
+  display: flex;
+  padding-top: 50px;
+  background-color:#dfe6e5c2;
+  margin-right: 40em;
+  margin-left: 40em;
+  border-radius: 0px 0px 15px 15px;
+}
+
+
+button {
+  JUSTIFY-CONTENT: center;
+  display: flex;
+  height: 60px;
+  width: 250px;
+  margin-bottom: 1em;
+  ALIGN-ITEMS: center;
+  background-color: rgba(117, 43, 16, 0.869);
+  border-radius: 5px;
+  font-size: 35px;
+  font-family:'Pixelify Sans', sans-serif; 
+  color: white;
+}
+
+.startbutton:disabled {
+  JUSTIFY-CONTENT: center;
+  display: flex;
+  height: 40px;
+  width: 150px;
+  margin-bottom: 2em;
+  ALIGN-ITEMS: center;
+  background-color: blueviolet;
+}
+
+
+.info {
+  display: flex;
+  justify-content: space-around;
   align-items: center;
+  text-align: center;
+  flex-direction: row;
+  margin-right: 30em;
+  margin-left: 30em;
+  background-color:#dfe6e5c2;
+  border-radius: 15px 15px 0px 0px;
+  padding-bottom:10px;
+  font-size: 20px;
+  font-family:'Pixelify Sans', sans-serif; 
+}
 
+.gridwrap {
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#dfe6e5c2;
+  margin-right: 40em;
+  margin-left: 40em;
+}
+
+.grid {
+  width: 500px;
+  height: 500px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  background-image:  url('../table.png');
+  background-size: cover;
+  border-radius: 15px 15px 15px 15px;
 
 }
 
-H1{
-  color: blue;
+.grid div{
+  border: none ;
+  display: inline-block;
+}
+
+.grid div.bao {
+  background-image: url('../Bao.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.fork {
+  background-image: url('../chopstick.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.fork2 {
+  background-image: url('../chopstick.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.forkflip {
+  background-image: url('../chopstick.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+
+.grid div.forkflip2 {
+  background-image: url('../chopstick.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.grid div.soydish {
+  background-image: url('../saucedish.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.steamer {
+  background-image: url('../steamer.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.steamer2 {
+  background-image: url('../steamer.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.steamer3 {
+  background-image: url('../steamer.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.steamer4 {
+  background-image: url('../steamer.png');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
