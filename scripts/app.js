@@ -12,13 +12,16 @@ const currentScore = document.getElementById('current-score')
 const currentHeighestScore = document.getElementById('current-highest-score')
 // start-button (for start the game)
 const startButton = document.getElementById('startbutton')
+// mute-button (for mute the music in the game)
+const muteButton = document.querySelector('.mute-btn')
+// gamemusic 
+const audio = document.querySelector('audio')
+
 
 
 // *Variables
-//currentLevel (update when the level up)
-//livesAmount (will decrease when the Bao be hit)
-//currentScore (will increse when the Bao cross each row)
-//current-highest-score (will update when the player hit the current highest score)
+
+//start position and current position for each enemy
 const baoStartPosition = 45
 let baoCurrentPosition = baoStartPosition
 const forkStartPosition_row1 = 35
@@ -42,73 +45,49 @@ let steamerCurrentPosition_row4 = steamerStartPosition_row4
 const steamerStartPosition_row4_2 = 12
 let steamerCurrentPosition_row4_2 = steamerStartPosition_row4_2
 
+//the edge of each row
 let row1Start = 35
 let row2Start = 34
 let row3Start = 14
 let row4Start = 13
+//currentScore (will increse when the Bao cross each row)
 let current_Score = 0
+//livesAmount (will decrease when the Bao be hit)
 let current_lives = 3
+//currentLevel (update when the level up)
 let current_level = 0
+//setInterval for different times
 let timer10
 let timer15
 let timer8
 let timer5
 let timer11
 let timer7
+
+//for set up grid
 const width = 7
 const cellCount = width * width
 let totalCell = width * width
 
+//array for different enemies 
 const enemyName = ['fork', 'fork2', 'forkflip', 'forkflip2', 'steamer', 'steamer2', 'steamer3']
 const dishPos = ['22', '23', '26']
 let levelOne = []
+
+
+
 //*Excutions
 
-function moveEnemyRight(currentPosition, rowStart, className) {
 
-  checkCollision(currentPosition)
-
-  if (currentPosition < rowStart + width) {
-    removeClass(currentPosition - 1, className)
-    addClass(currentPosition, className)
-    currentPosition = currentPosition + 1
-
-  } else {
-    removeClass(currentPosition - 1, className)
-    currentPosition = rowStart
-    // addClass(currentPosition,className)
-  }
-  return currentPosition
-
-}
-
-function moveEnemyLeft(currentPosition, rowStart, className) {
-
-  checkCollision(currentPosition)
-
-  if (currentPosition > rowStart - width) {
-    removeClass(currentPosition + 1, className)
-    addClass(currentPosition, className)
-    currentPosition = currentPosition - 1
-  } else {
-    removeClass(currentPosition + 1, className)
-    currentPosition = rowStart
-  }
-  return currentPosition
-
-}
-
-
-//*start the game
+//start the game level zero
 // The function that executes when a start button is clicked
 function startGame() {
-  // the items moveing in the rows every 1.5 seconds
   baoCurrentPosition = baoStartPosition
   addBao(baoCurrentPosition)
   placedishs()
+  redLine()
 
   timer15 = setInterval(() => {
-
     forkCurrentPosition_row1 = moveEnemyRight(forkCurrentPosition_row1, row1Start, 'forkflip')
     forkCurrentPosition_row1_2 = moveEnemyRight(forkCurrentPosition_row1_2, row1Start, 'forkflip2')
 
@@ -117,11 +96,9 @@ function startGame() {
 
     steamerCurrentPosition_row3 = moveEnemyRight(steamerCurrentPosition_row3, row3Start, 'steamer')
     steamerCurrentPosition_row3_2 = moveEnemyRight(steamerCurrentPosition_row3_2, row3Start, 'steamer2')
-
   }, 1500)
 
   timer10 = setInterval(() => {
-
     steamerCurrentPosition_row4 = moveEnemyLeft(steamerCurrentPosition_row4, row4Start, 'steamer2')
     steamerCurrentPosition_row4_2 = moveEnemyLeft(steamerCurrentPosition_row4_2, row4Start, 'steamer3')
   }, 1000)
@@ -130,22 +107,19 @@ function startGame() {
     steamerCurrentPosition_row3 = moveEnemyRight(steamerCurrentPosition_row3, row3Start, 'steamer')
     steamerCurrentPosition_row3_2 = moveEnemyRight(steamerCurrentPosition_row3_2, row3Start, 'steamer2')
     steamerCurrentPosition_row3_3 = moveEnemyRight(steamerCurrentPosition_row3_3, row3Start, 'steamer3')
-
   }, 800)
-
   playAudio()
   startButton.disabled = true
 }
 
-
+//start the game level one
 function startGame1() {
-  // the items moveing in the rows every 1.5 seconds
   baoCurrentPosition = baoStartPosition
   addBao(baoCurrentPosition)
   placedishs()
+  redLine()
 
   timer11 = setInterval(() => {
-
     forkCurrentPosition_row1 = moveEnemyRight(forkCurrentPosition_row1, row1Start, 'forkflip')
     forkCurrentPosition_row1_2 = moveEnemyRight(forkCurrentPosition_row1_2, row1Start, 'forkflip2')
 
@@ -154,7 +128,6 @@ function startGame1() {
 
     steamerCurrentPosition_row3 = moveEnemyRight(steamerCurrentPosition_row3, row3Start, 'steamer')
     steamerCurrentPosition_row3_2 = moveEnemyRight(steamerCurrentPosition_row3_2, row3Start, 'steamer2')
-
   }, 1100)
 
   timer7 = setInterval(() => {
@@ -166,20 +139,43 @@ function startGame1() {
     steamerCurrentPosition_row3 = moveEnemyRight(steamerCurrentPosition_row3, row3Start, 'steamer')
     steamerCurrentPosition_row3_2 = moveEnemyRight(steamerCurrentPosition_row3_2, row3Start, 'steamer2')
     steamerCurrentPosition_row3_3 = moveEnemyRight(steamerCurrentPosition_row3_3, row3Start, 'steamer3')
-
   }, 500)
 
   startButton.disabled = true
 }
 
 
-//* decrease the lives-amount 
-//check for collision
-//collision = true  will lose a life and game restart
+//countrol the enemy moving from left to right
+function moveEnemyRight(currentPosition, rowStart, className) {
+  checkCollision(currentPosition)
+  if (currentPosition < rowStart + width) {
+    removeClass(currentPosition - 1, className)
+    addClass(currentPosition, className)
+    currentPosition = currentPosition + 1
+  } else {
+    removeClass(currentPosition - 1, className)
+    currentPosition = rowStart
+  }
+  return currentPosition
+}
 
 
+//countrol the enemy moving from right to left
+function moveEnemyLeft(currentPosition, rowStart, className) {
+  checkCollision(currentPosition)
+  if (currentPosition > rowStart - width) {
+    removeClass(currentPosition + 1, className)
+    addClass(currentPosition, className)
+    currentPosition = currentPosition - 1
+  } else {
+    removeClass(currentPosition + 1, className)
+    currentPosition = rowStart
+  }
+  return currentPosition
+}
 
 
+//check the collision between bao and all the enemies
 function checkCollision(enemyPos) {
   if (enemyPos === baoCurrentPosition) {
     removeBao(baoCurrentPosition)
@@ -190,11 +186,9 @@ function checkCollision(enemyPos) {
   }
 }
 
-
 function checkBaoHitDish() {
   dishPos.forEach(function (pos) {
     console.log(`${pos} ${baoCurrentPosition}`)
-
     if (pos == baoCurrentPosition) {
       removeBao(baoCurrentPosition)
       baoCurrentPosition = baoStartPosition
@@ -218,15 +212,13 @@ function checkBaoHitEnemy(baoCurrentPosition) {
   })
 }
 
-
+//reset the game 
 function reset() {
   currentLevel.innerText = 0
   current_lives = 3
   livesAmount.innerText = current_lives
   currentScore.innerText = 0
-  console.log('game number reset')
 }
-
 
 //add the bao in the game
 function addBao(position) {
@@ -238,38 +230,25 @@ function removeBao(position) {
   cells[position].classList.remove('bao');
 }
 
-
-//add the fork in the game
+//add the enemy in the game
 function addClass(position, className) {
   cells[position].classList.add(className);
-  // console.log(`add ${position}`)
 }
 
-//remove the fork in the game
+//remove the enemy in the game
 function removeClass(position, className) {
   cells[position].classList.remove(className);
-  // console.log(`remove ${position}`)
 }
 
+//add the soydish enemy 
 function placedishs() {
   cells[22].classList.add('soydish')
   cells[23].classList.add('soydish')
   cells[26].classList.add('soydish')
 }
 
-
-// function collision(event){
-//   if(baoCurrentPosition = event.target.classList.contains['forkflip']){
-//     removeBao(baoCurrentPosition)
-//     addBao(baoCurrentPosition)
-//     console.log('collision')
-
-//   }
-// }
-
-//make the bao could move
+//make the bao could move by keyboard
 function KeyPress(evt) {
-
   if (current_lives > 0) {
     const key = evt.code
     if (key === 'ArrowUp' && baoCurrentPosition >= width) {
@@ -299,22 +278,14 @@ function KeyPress(evt) {
     addBao(baoCurrentPosition)
     checkBaoHitDish()
     levelUp(baoCurrentPosition)
-
   } else if (current_lives === 0) {
-
     gameoverState()
     startButton.disabled = false
     alert(`Game Over, your final score is ${current_Score}`)
   }
 }
 
-//* end the game
-//when the lives-amount equel to 0, game finish.
-//all the items dispear on the grid
-//alarm on the page, showing final score
-//game music stop playing
-
-
+// game over state
 function gameoverState() {
   clearEnemy()
   clearInterval(timer8)
@@ -327,39 +298,30 @@ function gameoverState() {
   reset()
 }
 
-  //* player win 
+// Bao win the game and move to next level
+function baoWin() {
+  current_Score += 100
+  currentScore.innerText = `${current_Score}`
+  current_level += 1
+  currentLevel.innerText = `${current_level}`
+  removeBao(baoCurrentPosition)
+  baoCurrentPosition = baoStartPosition
+  addBao(baoCurrentPosition)
+  clearEnemy()
+  clearInterval(timer8)
+  clearInterval(timer10)
+  clearInterval(timer15)
+  addBao(baoCurrentPosition)
+  startGame1()
+}
 
-  function baoWin() {
-    current_Score += 100
-    currentScore.innerText = `${current_Score}`
-    current_level += 1
-    currentLevel.innerText = `${current_level}`
-    removeBao(baoCurrentPosition)
-    baoCurrentPosition = baoStartPosition
-    addBao(baoCurrentPosition)
-    clearEnemy()
-    clearInterval(timer8)
-    clearInterval(timer10)
-    clearInterval(timer15)
-    addBao(baoCurrentPosition)
-    startGame1()
-  }
-
-  function levelUp(baoCurrentPosition) {
-    if( baoCurrentPosition < width){
+function levelUp(baoCurrentPosition) {
+  if (baoCurrentPosition < width) {
     baoWin()
   }
-  }
+}
 
-  // function levelOneFinish(width) {
-  //   for(i = 0 ; width-1 < i ; i ++ ) {
-  //     cells[i].classList.add('finish')
-  //     console.log(cell.classList.contains('finish'))
-  //   }
-  // }
-  
-
-
+//claer all the enemies
 function clearEnemy() {
   for (let i = 0; i < totalCell; i++) {
     cells[i].classList.remove('fork', 'fork2', 'forkflip', 'forkflip2', 'steamer', 'steamer2', 'steamer3')
@@ -367,33 +329,19 @@ function clearEnemy() {
 }
 
 
-
-
-
-//*Update the current-highest-score
-// check the current-score is over the current-highest-score
-// if it is , update the current-highest-score
-
-//*Increase the current-level
-//when the Bao reach to the steamer update the currentLevel
-//the items start to move in the rows every 1.5 seconds
-
-
-
-
 //*Event Listeners
+
 //click event triggering on start-button
-//Keypress event 
 startButton.addEventListener('click', startGame)
+//Keypress event 
 document.addEventListener('keyup', KeyPress)
+//click event to mute the music
+muteButton.addEventListener('click', muteAudio)
 
 //Making a grid in JS
-
-
 function createGrid() {
   for (let i = 0; i < cellCount; i++) {
     const cell = document.createElement('div')
-    //cell.innerText = i
     cell.id = i
     cell.style.width = `${100 / width}%`
     cell.style.height = `${100 / width}%`
@@ -401,11 +349,29 @@ function createGrid() {
     cells.push(cell)
   }
 }
-
 createGrid()
 
-function playAudio() {
-  const audio = document.createElement("audio");
-  audio.src = "Hungry.mp3";
-  audio.play();
+//display the red line on first row of the grid
+function redLine() {
+  for (i = 0; i < width; i++) {
+    cells[i].classList.add('redline')
   }
+}
+
+
+function playAudio() {
+  audio.play();
+}
+
+//mute game music function
+function muteAudio() {
+  console.log('press mute')
+  if (audio.muted === true) {
+    audio.muted = false
+    muteButton.innerHTML = '&#x1f50a'
+  } else {
+    audio.muted = true
+    muteButton.innerHTML = '&#x1f507'
+  }
+}
+

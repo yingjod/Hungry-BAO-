@@ -15,8 +15,8 @@ header {
   display: block;
   text-align: center;
   background-color:#dfe6e5c2;
-  margin-right: 40em;
-  margin-left: 40em;
+  margin-right: 30em;
+  margin-left: 30em;
   border-radius: 15px 15px 15px 15px;
   border-top: 20px;
   font-family:'Pixelify Sans', sans-serif; 
@@ -25,20 +25,12 @@ header {
 
 H1 {
   color:rgb(88, 26, 26);
-  
   font-size: 40px;
-  background-color: aliceblue;
-  border-radius: 15px 15px 0px 0px;
+  background-color: #dfe6e5c2;
+  border-radius: 15px 15px 15px 15px;
   padding-top: 30px;
   padding-bottom: 30px;
 
-}
-
-h3{
-  background-color:#dfe6e5c2;
-  border-radius: 15px 15px 15px 15px;
-  padding-top: 10px;  
-  padding-bottom: 10px;
 }
 
 footer {
@@ -46,8 +38,8 @@ footer {
   display: flex;
   padding-top: 50px;
   background-color:#dfe6e5c2;
-  margin-right: 40em;
-  margin-left: 40em;
+  margin-right: 30em;
+  margin-left: 30em;
   border-radius: 0px 0px 15px 15px;
 }
 
@@ -66,6 +58,13 @@ button {
   color: white;
 }
 
+.mute-btn{
+  background-color:transparent;
+  width: 50px;
+  border: none;
+
+}
+
 .startbutton:disabled {
   JUSTIFY-CONTENT: center;
   display: flex;
@@ -73,7 +72,7 @@ button {
   width: 150px;
   margin-bottom: 2em;
   ALIGN-ITEMS: center;
-  background-color: blueviolet;
+
 }
 
 
@@ -83,8 +82,8 @@ button {
   align-items: center;
   text-align: center;
   flex-direction: row;
-  margin-right: 30em;
-  margin-left: 30em;
+  margin-right: 22.5em;
+  margin-left: 22.5em;
   background-color:#dfe6e5c2;
   border-radius: 15px 15px 0px 0px;
   padding-bottom:10px;
@@ -98,8 +97,8 @@ button {
   justify-content: center;
   align-items: center;
   background-color:#dfe6e5c2;
-  margin-right: 40em;
-  margin-left: 40em;
+  margin-right: 30em;
+  margin-left: 30em;
 }
 
 .grid {
@@ -118,7 +117,7 @@ button {
 }
 
 .grid div.bao {
-  background-image: url('../Bao.png');
+  background-image: url('../bao.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -158,6 +157,14 @@ button {
   background-size: contain;
 }
 
+
+.grid div.redline {
+  background-image: url('../redline.png');
+  background-repeat: no-repeat;
+  background-size:250%;
+
+}
+
 .grid div.steamer {
   background-image: url('../steamer.png');
   background-repeat: no-repeat;
@@ -181,3 +188,4 @@ button {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
