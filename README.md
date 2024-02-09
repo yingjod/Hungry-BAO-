@@ -4,11 +4,12 @@
 Hungry Bao! is a game based on the game Frogger. You must take the Bao to the finish line without hitting any obstacles. Should not hit the sauce dish, also not get hit by the steamer or picked from the chopstick.
 
 ## Deployment link
-https://yingjod.github.io/frogger/
+This site was built using [GitHub Pages](https://pages.github.com/).
+
 
 ## Getting Started/Code Installation
 If you want it to run locally on your machine:
- - Go to the GitHub repository https://yingjod.github.io/frogger/
+ - Go to the [GitHub repository](https://yingjod.github.io/frogger/).
  - Fork it to your own GitHub account
  - Clone in via this green button where it is written <>code and copy the link from SSH
  - Open the terminal and change the current working directory to the location where you want the cloned directory.
