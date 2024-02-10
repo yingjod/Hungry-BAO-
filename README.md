@@ -46,17 +46,14 @@ I spent 5 days working independently to build a grid-based game using JavaScript
 
 ## Brief
 
-
-
-
-
-
+![Brief1](/readmeimg/Brief1.png)
+![Brief2](/readmeimg/Brief2.png)
 
 
 ## Planning
 The project aimed to provide an enjoyable gaming experience, enhancing skills in JavaScript, HTML, and CSS. The ambition was to create a visually appealing and functional game with clear objectives and progressively challenging levels.
 
-
+![wireframe](/readmeimg/wireframe.png)
 
 
 
