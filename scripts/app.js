@@ -1,3 +1,7 @@
+/* eslint-disable no-undef */
+/* eslint-disable prefer-const */
+/* eslint-disable camelcase */
+
 // *Elements
 //set up grid
 const grid = document.querySelector('.grid')
@@ -360,7 +364,7 @@ function redLine() {
 
 
 function playAudio() {
-  audio.play();
+  audio.play()
 }
 
 //mute game music function
