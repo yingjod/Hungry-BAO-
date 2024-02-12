@@ -60,9 +60,6 @@ The project aimed to provide an enjoyable gaming experience, enhancing skills in
 
 ## Build/Code Process
 
-
-## Insert your Build/Code Process here:
-
 - Day 1 – Initiated the game by sketching a wireframe and creating pseudocode. Developed the HTML structure, styled the User Interface using CSS, and curated images and music for the game.
 - Day 2: I utilized JavaScript to construct the grid, incorporating the Bao character. I implemented key functions for Bao's movement and established a start button to initiate the game.
 - Day 3- Introduced dynamic obstacles with varying speeds, moving both from right to left and left to right. Implemented elements such as the sauce dish and additional stationary obstacles. Set up a scoring system to track the player's progress. From a technical standpoint, this involved using JavaScript to manipulate the DOM, adjusting element positions, and updating score variables based on user interactions.
